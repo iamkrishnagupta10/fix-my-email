@@ -36,6 +36,7 @@ def load_LLM(openai_api_key):
     # Make sure your openai_api_key is set as an environment variable
     llm = OpenAI(temperature=.7, openai_api_key=openai_api_key)
     return llm
+
 st.set_page_config(page_title="Fix my Email", page_icon=":robot:")
 st.header("Fix my Email")
 
@@ -45,12 +46,11 @@ with col1:
     st.markdown("Often professionals would like to improve their emails, but don't have the skills to do so. \n\n This tool \
                 will help you improve your email skills by converting your emails into a more professional format. This tool \
                 is powered by [LangChain](https://langchain.com/) and [OpenAI](https://openai.com) and made by \
-                [@GregKamradt](https://twitter.com/GregKamradt). \n\n View Source Code on [Github](https://github.com/gkamradt/globalize-text-streamlit/blob/main/main.py)")
-
+                [@iamkrishnagupta10](https://github.com/iamkrishnagupta10)")
 with col2:
-    st.image(image='letter.png', width=500)
+    st.image(image='letter.png', width=200)
 
-st.markdown("## Enter Your Email To Convert")
+st.markdown("#### Enter your email to format")
 
 def get_api_key():
     input_text = st.text_input(label="OpenAI API Key ",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input")
@@ -89,7 +89,7 @@ st.markdown("### Your Converted Email:")
 
 if email_input:
     if not openai_api_key:
-        st.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
+        st.warning('Please insert OpenAI API Key. This tool uses GPT to generate responses)', icon="⚠️")
         st.stop()
 
     llm = load_LLM(openai_api_key=openai_api_key)
